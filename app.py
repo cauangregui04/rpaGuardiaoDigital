@@ -29,7 +29,7 @@ prefs = {
 options.add_experimental_option("prefs", prefs)
 navegador = webdriver.Chrome(service=servico, options=options)
 
-navegador.get("https://cedoc.guardiao.digital/#/login/company")
+navegador.get("https://guardiao.digital/#/login/company")
 navegador.maximize_window()
 
 with open("venv.txt", "r") as arquivo:
@@ -41,7 +41,7 @@ time.sleep(2)
 navegador.find_element(
     "xpath",
     "/html/body/app-root/gd-login/div/div[3]/gd-company/div/div/div/div/form/div[1]/div/input",
-).send_keys("rni")
+).send_keys("suaempresa")
 navegador.find_element(
     "xpath",
     "/html/body/app-root/gd-login/div/div[3]/gd-company/div/div/div/div/form/button",
@@ -81,7 +81,7 @@ def rpaGed():
 
     try:
         clickable = navegador.find_element(
-            "xpath", "// span[contains(text(),'MALA DIRETA')]"
+            "xpath", "// span[contains(text(),'Nome de busca')]"
         )
         ActionChains(navegador).double_click(clickable).perform()
         msg = "Importado para o GED"
@@ -92,7 +92,7 @@ def rpaGed():
         ).click()
         time.sleep(2)
         iframe = navegador.find_element(
-            "xpath", "// div[contains(text(),' MALA DIRETA ')]"
+            "xpath", "// div[contains(text(),' Nome de buscar ')]"
         )
         ActionChains(navegador).scroll_to_element(iframe).double_click(iframe).perform()
         pdfs2 = pdfs[i].split("-")
